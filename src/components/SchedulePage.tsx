@@ -189,7 +189,7 @@ const SchedulePage: React.FC = () => {
 
       <Card>
 
-        <CardHeader className="text-xl font-semibold text-center">{currentYear} Schedule</CardHeader>
+        <CardHeader className="text-xl font-semibold text-center">{currentYear} Regular Season Schedule</CardHeader>
 
         <CardContent>
 
