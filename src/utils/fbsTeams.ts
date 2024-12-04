@@ -9,6 +9,8 @@ export interface Team {
   stadium: string
 }
 
+export const conferences = ['ACC', 'Big Ten', 'Big 12', 'Pac-12', 'SEC', 'AAC', 'C-USA', 'MAC', 'MWC', 'Sun Belt']
+
 export const fbsTeams: Team[] = [
   {
     "name": "Air Force",
@@ -1220,4 +1222,12 @@ export const fbsTeams: Team[] = [
 
 export function getTeamByName(name:string): Team|undefined {
   return fbsTeams.find(team => team.name === name);
+}
+
+export function getTeamLocation(name:string) : string {
+  var teamData = getTeamByName(name)
+  if(teamData === undefined)
+    return "N/A"
+  else
+    return teamData.city + ", " + teamData.state
 }

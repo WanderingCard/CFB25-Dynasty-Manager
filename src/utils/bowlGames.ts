@@ -1,3 +1,12 @@
+export const playoffBowls = [
+    "Cotton Bowl",
+    "Fiesta Bowl",
+    "Orange Bowl",
+    "Peach Bowl",
+    "Rose Bowl",
+    "Sugar Bowl",
+]
+
 export const bowlGames = [
     "68 Ventures Bowl",
     "Alamo Bowl",

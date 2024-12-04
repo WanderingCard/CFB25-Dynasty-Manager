@@ -2,7 +2,7 @@
 
 import { Recruit, Transfer } from "@/types/playerTypes";
 import { Award } from "@/types/statTypes";
-import { Game, YearRecord, YearStats } from "@/types/yearRecord";
+import { conferenceChampionRecord, Game, seasonChampionsRecord, YearRecord, YearStats } from "@/types/yearRecord";
 import { stat } from "fs";
 import { getTeamByName } from "./fbsTeams";
 
@@ -254,4 +254,34 @@ export const getYearAwards = (year: number): Award[] => {
   return [];
 }
 
-// TODO: Add Method to Generate and Save Year Record
+export const setConferenceChampions = (year: number, record: conferenceChampionRecord[]) : void => {
+  if (typeof window !== 'undefined') {
+    const storedRecords = localStorage.getItem('conferenceRecords');
+    let records: seasonChampionsRecord[] = storedRecords ? JSON.parse(storedRecords) : [];
+    const existingIndex = records.findIndex(r => r.year === year);
+
+    if (existingIndex !== -1) {
+      records[existingIndex] = {year: year, champions: record};
+    } else {
+      records.push({year: year, champions: record});
+    }
+
+    localStorage.setItem('conferenceRecords', JSON.stringify(records));
+  }
+}
+
+export const getConferenceChampions = (year: number): seasonChampionsRecord => {
+  if (typeof window !== 'undefined') {
+    const storedRecords = localStorage.getItem('conferenceRecords');
+    let records: seasonChampionsRecord[] = storedRecords ? JSON.parse(storedRecords) : [];
+    const existingIndex = records.findIndex(r => r.year === year);
+
+    if (existingIndex !== -1) {
+      return records[existingIndex]
+    }
+  }
+  return {
+    year: year,
+    champions: []
+  }
+}

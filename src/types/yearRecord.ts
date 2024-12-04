@@ -46,3 +46,16 @@ export interface Game {
 export type AllRecords = {
   [year: number]: YearRecord;
 };
+
+export type conferenceChampionRecord = {
+  conference: string,
+  champion: string,
+  ccg: boolean,
+  runnerUp?: string,
+  ccgScore?: string
+}
+
+export type seasonChampionsRecord = {
+  year: number, 
+  champions: conferenceChampionRecord[]
+}
