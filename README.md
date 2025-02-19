@@ -1,57 +1,81 @@
+<p align="center">
+  <strong>LEAVE FEEDBACK AND REQUESTS IN THE DISCUSSION THREAD HERE:</strong><br>
+  <a href="https://github.com/kn1meR/CFB25-Dynasty-Manager/discussions/3">github.com/kn1meR/CFB25-Dynasty-Manager/discussions/3</a>
+</p>
+
+<br>
+<br>
+
+<ins>**Tutorial Video:**</ins>
+<div align="center">
+  <a href="https://www.youtube.com/watch?v=-xD6pkTtBgU">
+    <img src="https://github.com/user-attachments/assets/ba1550e6-e265-4d55-a425-b6c2eed25ed4" alt="CFB Tracker"  width="100%">
+  </a>
+</div>
+<br>
+
 <ins>**FEATURES:**</ins>
 
-1. Customizable Coach and School Name.
+1. Set Coach Name, School Name, and Year.
 2. Application Data Reset - ***USE CAUTIOUSLY!*** - Resets all application data and wipes any previously entered data/information.
 3. Dark & Light Mode.
 4. Team Dashboard - See relevant team data at a quick glance.
 5. Schedule - Win/Loss/Tie and Score Tracker. Will automatically update record and points for/against in team dashboard & year stats.
 6. Top 25 - Allows for user input of the Top 25 teams week by week.  Will show movement of teams via green and red arrows. 
 7. Roster - Allows for roster input with jersey #, name, position, year, overall, dev. trait and notes. sortable by all fields (except notes).
-   
-   **NEW:** **UPLOAD SCREENSHOTS TO HAVE ROSTER AUTO ADDED** 
+
+   **BETA:** **UPLOAD SCREENSHOTS TO HAVE ROSTER AUTO ADDED** 
 8. Recruiting Class Tracker - Enter recruits' name, star rating, position, rating, and potential. Automatically tracked and stored year over year for easy viewability in the future.
 9. Transfer Class Tracker - Enter transfers' name, star rating, position, transfer direction(To/From), and potential. Automatically tracked and stored year over year for easy viewability in the future.
-10. Player Stats - Track stats for players by year.  See Game, Season, or Overall records for Offense, Defense, or Special Teams.  
+10. Player Stats - Track stats for players by year.  See Season or Career stats for Offense, Defense, or Special Teams.  
 11. Season Stats - Buttons for all 30 years. Stats tracked are Record, Conference Record, Points For, Points Against, Bowl Game & Result, National Champion, Heisman Record, and Schedule w/ Opponent and Result with Score.
 12. Player Awards - Selectable player awards tracked on a year-to-year basis for easy viewabilty in the future.
 13. Trophy Case - Enterable Trophies for users to track National Championships, Bowl Games, Conference Championships and Rivalry Games.
+14. Tools - Recruiting tools to give overall estimates, if you should Hard Sell or not, a Random Name Generator, and an Import / Export function for saving progress!
 
 
-<ins>**HOW TO USE:** _(s/o ALostTraveler24 on Reddit)_</ins>
+<ins>**HOW TO USE:**</ins>
 
 1. First you need to verify that you have [`node.js`](https://nodejs.org/en/download/package-manager/current) on your device. You can install it from the linked website, but if you want to check if you have it already, load up your device's terminal/console and type in `node -v`
-2. Once that's done, you want to clone the repository. For that you need git and then you can either use the command prompt `git clone <repo url>` or you can download Github Desktop which might be a bit easier if you are new to git and don't use it at all other than for this.
-3. Once the repo is cloned, you need to use the terminal again. Go into the folder containing the cloned repo, `cd <folder_path>` and then run `npm install --force`. This will install the dependencies.
-4. Once everything is installed, in the same folder, run `npm run dev` and the program will start. Then navigate in a browser (unless it auto-loads for you) to `localhost:3000`
+2. Once that's done, you want to download/clone the repository. For that you can click on the green code button and click "Download as ZIP".  If using this way, then extract `CFB25-Dynasty-Manager-main` from the .ZIP file and move to your Desktop.  Or you can use git and you can either use the command prompt `git clone <repo url>` or download Github Desktop which might be a bit easier if you are new to git and don't use it at all other than for this.
+3. Once the repo is cloned, you need to use the Terminal again.  Go to the `CFB25-Dynasty-Manager-main` folder on your desktop, Right-Click on the folder, and select `Copy Path`.  Then, open Command Prompt, and type `cd` and paste the path you copied, and then run `npm install`. This will install the dependencies.
+4. Once everything is installed, in the same folder path as before, run `npm run electron-dev` and the program will start.
+5. When you're done using the app, you should close the app and end the process by pressing `ctrl+c` in the Terminal.
+6. Whenever you want to run the app again, just naviate into the folder by typing `cd <folder_path>` in the Command Prompt, and type `npm run electron-dev`.
 
-   I think that's everything, when you're done with the app, you should probably end the process in the terminal `ctrl+c` should do the trick and then everytime you want to use it again, just run the last step again and it should load up with the relevant data.
+   * *BONUS TIP - If you want to create a desktop shotcut to automate the process, you can make a .bat file and enter `cd <folder_path> npm run electron-dev` and then save and use that as a psuedo-shortcut.*
 
 
-<ins>**ISSUES:**</ins>
 
-  Will not build into standalone app properly.  
+<ins>**COMMON ISSUES:**</ins>
   
-  After installing node and all dependencies in `package.json`, running `npm run dev` in Terminal runs the application properly as intended.
+  After installing node and all dependencies in `package.json`, running `npm run electron-dev` in Terminal runs the application properly as intended.
 
 
-![image](https://github.com/user-attachments/assets/5f81576e-aa6a-4d81-84c6-4c947c35908d)
+<ins>**SCREENSHOTS:**</ins>
 
-![image](https://github.com/user-attachments/assets/d14b1463-ca1e-4595-b515-456fec421223)
+![image](https://github.com/user-attachments/assets/e70565b7-5cf4-4082-a5b7-6ac007bc1142)
 
-![image](https://github.com/user-attachments/assets/c5755902-f864-4f11-8790-b1a28f3fb3bd)
+![image](https://github.com/user-attachments/assets/994b250d-2494-40d5-b93e-938ca07bebaa)
 
-![image](https://github.com/user-attachments/assets/dd292162-40d2-4e0d-84cd-68c2e4a9577f)
+![image](https://github.com/user-attachments/assets/09a64286-130d-4467-a520-78b9e575ccb6)
 
-![image](https://github.com/user-attachments/assets/aa6c87a7-55cc-4c1b-b754-81daaf503804)
+![image](https://github.com/user-attachments/assets/abd7e7e4-b86d-4fc7-957b-1ba8d111965b)
 
-![image](https://github.com/user-attachments/assets/6fa8ecd1-d653-47fb-9018-a3b2cb98976d)
+![image](https://github.com/user-attachments/assets/f87455ef-2838-4aeb-9a40-1a7a7be31e9b)
 
-![image](https://github.com/user-attachments/assets/014252ff-94f6-49fc-ab1c-55d3a2d5ac16)
+![image](https://github.com/user-attachments/assets/ccea5c16-af54-413d-bbee-2ca60136759b)
 
-![image](https://github.com/user-attachments/assets/d7a992e7-27b0-48b0-bb49-bf2e3162cc06)
+![image](https://github.com/user-attachments/assets/848353f6-0235-4f6d-b074-4cb147c22165)
 
-![image](https://github.com/user-attachments/assets/ac4231aa-a26d-484b-8470-5586da00a5fd)
+![image](https://github.com/user-attachments/assets/be78b5a3-55ee-403e-bbc1-91a80e02687d)
 
-![image](https://github.com/user-attachments/assets/5a4a9ef9-3d71-4521-befa-fd6b9a723aa6)
+![image](https://github.com/user-attachments/assets/272e6824-b6b5-4243-80ae-2aed712718f5)
 
-![image](https://github.com/user-attachments/assets/7bcb8bd6-bc1b-4df4-8353-7c53729f7d0f)
+![image](https://github.com/user-attachments/assets/2a2512f7-7d3f-4786-9940-6cdb46c0b6d8)
+
+![image](https://github.com/user-attachments/assets/28fb8b42-0f9f-42f2-ac3e-3b285b9a6413)
+
+![image](https://github.com/user-attachments/assets/5570c97b-4128-4139-ab15-84cfb4a6c8f3)
+
+

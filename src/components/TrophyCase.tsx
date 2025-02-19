@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { notifySuccess, notifyError, MESSAGES } from '@/utils/notification-utils';
 
 interface Trophy {
   id: number;
@@ -32,10 +33,12 @@ const TrophyCase: React.FC = () => {
       type: 'National Championship',
       name: '',
     });
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   const removeTrophy = (id: number) => {
     setAllTrophies(allTrophies.filter(trophy => trophy.id !== id));
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   return (
@@ -46,19 +49,6 @@ const TrophyCase: React.FC = () => {
         <CardHeader className="text-xl font-semibold">
           <div className="flex justify-between items-center">
             <span>Add New Trophy for Year: {selectedYear}</span>
-            <Select
-              value={selectedYear.toString()}
-              onValueChange={(value) => setSelectedYear(parseInt(value))}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 5 }, (_, i) => currentYear + i).map(year => (
-                  <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
           </div>
         </CardHeader>
         <CardContent>
@@ -105,7 +95,11 @@ const TrophyCase: React.FC = () => {
                 <p>{trophy.type}</p>
                 <p>{trophy.year}</p>
                 <Button
-                  onClick={() => removeTrophy(trophy.id)}
+                  onClick={() => {
+                    if (window.confirm("Are you sure you want to remove this trophy?")) {
+                      removeTrophy(trophy.id);
+                    }
+                  }}
                   variant="destructive"
                   size="sm"
                   className="mt-2"

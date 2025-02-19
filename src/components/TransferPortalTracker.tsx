@@ -12,8 +12,9 @@ import { fbsTeams } from '@/utils/fbsTeams';
 import { Transfer } from '@/types/playerTypes';
 import { getTransfers } from '@/utils/localStorage';
 import { generalPositions } from '@/types/playerTypes';
+import { notifySuccess, notifyError, MESSAGES } from '@/utils/notification-utils';
 
-const starOptions = ['1', '2', '3', '4', '5'];
+const starOptions = ['5', '4', '3', '2', '1'];
 
 const TransferPortalTracker: React.FC = () => {
   const [currentYear] = useLocalStorage<number>('currentYear', new Date().getFullYear());
@@ -45,6 +46,7 @@ const TransferPortalTracker: React.FC = () => {
       transferDirection: 'From',
       school: ''
     });
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   const startEditing = (transfer: Transfer) => {
@@ -71,6 +73,7 @@ const TransferPortalTracker: React.FC = () => {
       transferDirection: 'From',
       school: ''
     });
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   const cancelEdit = () => {
@@ -86,6 +89,7 @@ const TransferPortalTracker: React.FC = () => {
 
   const removeTransfer = (id: number) => {
     setAllTransfers(allTransfers.filter(transfer => transfer.id !== id));
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   return (
@@ -96,19 +100,7 @@ const TransferPortalTracker: React.FC = () => {
         <CardHeader className="text-xl font-semibold">
           <div className="flex justify-between items-center">
             <span>Add New Transfer for Year: {selectedYear}</span>
-            <Select
-              value={selectedYear.toString()}
-              onValueChange={(value) => setSelectedYear(parseInt(value))}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 5 }, (_, i) => currentYear + i).map(year => (
-                  <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            
           </div>
         </CardHeader>
         <CardContent>

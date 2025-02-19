@@ -10,9 +10,10 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { capitalizeName } from '@/utils';
 import { Recruit } from '@/types/playerTypes';
 import { generalPositions } from '@/types/playerTypes';
+import { notifySuccess, notifyError, MESSAGES } from '@/utils/notification-utils';
 
 const potentials = ['Elite', 'Star', 'Impact', 'Normal'];
-const starOptions = ['1', '2', '3', '4', '5'];
+const starOptions = ['5', '4', '3', '2', '1'];
 
 const RecruitingClassTracker: React.FC = () => {
   const [currentYear] = useLocalStorage<number>('currentYear', new Date().getFullYear());
@@ -38,6 +39,7 @@ const RecruitingClassTracker: React.FC = () => {
     };
     setAllRecruits([...allRecruits, recruitToAdd]);
     setNewRecruit({ name: '', stars: '', position: '', rating: '', potential: '' });
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   const startEditing = (recruit: Recruit) => {
@@ -53,6 +55,7 @@ const RecruitingClassTracker: React.FC = () => {
     ));
     setEditingId(null);
     setNewRecruit({ name: '', stars: '', position: '', rating: '', potential: '' });
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   const cancelEdit = () => {
@@ -62,6 +65,7 @@ const RecruitingClassTracker: React.FC = () => {
 
   const removeRecruit = (id: number) => {
     setAllRecruits(allRecruits.filter(recruit => recruit.id !== id));
+    notifySuccess(MESSAGES.SAVE_SUCCESS);
   };
 
   return (
@@ -72,19 +76,7 @@ const RecruitingClassTracker: React.FC = () => {
         <CardHeader className="text-xl font-semibold">
           <div className="flex justify-between items-center">
             <span>Add New Recruit for Year: {selectedYear}</span>
-            <Select
-              value={selectedYear.toString()}
-              onValueChange={(value) => setSelectedYear(parseInt(value))}
-            >
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Select Year" />
-              </SelectTrigger>
-              <SelectContent>
-                {Array.from({ length: 5 }, (_, i) => currentYear + i).map(year => (
-                  <SelectItem key={year} value={year.toString()}>{year}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            
           </div>
         </CardHeader>
         <CardContent>
@@ -164,7 +156,7 @@ const RecruitingClassTracker: React.FC = () => {
                 <th className="text-center">Stars</th>
                 <th className="text-center">Position</th>
                 <th className="text-center">Rating</th>
-                <th className="text-center">Potential</th>
+                <th className="text-center">Dev. Trait</th>
                 <th className="text-center">Actions</th>
               </tr>
             </thead>
