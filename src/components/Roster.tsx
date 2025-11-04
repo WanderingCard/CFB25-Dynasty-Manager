@@ -35,6 +35,30 @@ interface Player {
   isRedshirted: boolean;
 }
 
+interface NewPlayer {
+  PlayerRosterId: number;
+  Year: number;
+  FirstName: string;
+  LastName: string;
+  Suffix: string;
+  TeamName: string;
+  Overall: number;
+  Class: string;
+  JerseyNumber: number;
+  Trait: string;
+  Redshirted: boolean;
+  PlayerId: number;
+}
+
+async function fetchSeasonRoster(year:number): Promise<NewPlayer[]> {
+  const response = await fetch(`/api/rosters/${year}`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch season roster');
+  }
+  const outRoster: NewPlayer[] = await response.json();
+  return outRoster;
+}
+
 interface DevTraitBadgeProps {
   trait: 'Normal' | 'Impact' | 'Star' | 'Elite';
 }
@@ -64,6 +88,11 @@ const DevTraitBadge: React.FC<DevTraitBadgeProps> = ({ trait }) => {
   return <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-sm/6 font-medium ${colors[trait]}`}>{trait}</span>;
 };
 
+function getRoster(year:number): Player[] {
+  let outArray: Player[] = [];
+  return outArray;
+}
+
 const Roster: React.FC = () => {
   const [players, setPlayers] = useLocalStorage<Player[]>('players', []);
   const [filteredPlayers, setFilteredPlayers] = useState<Player[]>([]);
@@ -74,6 +103,26 @@ const Roster: React.FC = () => {
   const [posFilter, setPosFilter] = useState(FILTER_ALL);
   const { selectedPlayer, isOpen, openPlayerCard, closePlayerCard } = usePlayerCard();
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [rosterPlayers, setRosterPLayers] = useState<NewPlayer[]>([]);
+  const [playersLoaded, setPlayersLoaded] = useState(false);
+
+  // Test Fetch
+
+  useEffect(() => {
+    const loadPlayers = async () => {
+      try {
+        const roster = await fetchSeasonRoster(2025);
+        console.log(roster)
+        setRosterPLayers(roster);
+      } catch (err) {
+        console.log("Error Loading Roster from selected Year: ", (err as Error).message);
+      } finally {
+        setPlayersLoaded (true);
+      }
+    }
+
+    loadPlayers();
+  }, [])
 
   useEffect(() => {
     if (posFilter === FILTER_ALL) setFilteredPlayers(players);
